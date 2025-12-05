@@ -2,6 +2,7 @@ name: thumbnail-caption-bot
 build:
   type: docker
 deploy:
+  ports: []   # No public ports required
   env:
     - key: API_ID
       value: ${API_ID}
@@ -9,3 +10,5 @@ deploy:
       value: ${API_HASH}
     - key: BOT_TOKEN
       value: ${BOT_TOKEN}
+health_check:
+  disabled: true
