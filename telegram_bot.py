@@ -66,7 +66,15 @@ async def process(client, message, skip=False):
     original = await client.get_messages(user, msg_id)
     caption = original.caption if skip else data["caption"]
 
-    await original.copy(chat_id=user, caption=caption, thumb=data["thumb"])
+    if original.video and "thumb" in data:
+    await client.send_video(
+        chat_id=user,
+        video=original.video.file_id,
+        caption=caption,
+        thumb=data["thumb"]
+    )
+else:
+    await original.copy(chat_id=user, caption=caption)
     await message.reply_text("Done! Instant updated file is here🔥")
 
 print("Bot Started")
