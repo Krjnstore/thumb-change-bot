@@ -1,0 +1,11 @@
+name: thumbnail-caption-bot
+build:
+  type: docker
+deploy:
+  env:
+    - key: API_ID
+      value: ${API_ID}
+    - key: API_HASH
+      value: ${API_HASH}
+    - key: BOT_TOKEN
+      value: ${BOT_TOKEN}
